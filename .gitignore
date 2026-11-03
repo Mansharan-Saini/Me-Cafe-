@@ -1,0 +1,10 @@
+# Keep local credentials and generated files out of source control.
+.env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+instance/
+.pytest_cache/
+.coverage
+htmlcov/

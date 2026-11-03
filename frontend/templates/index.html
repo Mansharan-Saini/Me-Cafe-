@@ -1,0 +1,83 @@
+<!doctype html>
+<!-- Main page for the small food expiry and waste project. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fresh Stock Mini Project</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+  <header class="top">
+    <div><p class="tag">ORACLE PL/SQL MINI PROJECT</p><h1>Fresh Stock</h1></div>
+    <button id="refresh" type="button">Refresh data</button>
+  </header>
+
+  <main>
+    <section class="summary-grid" id="summary" aria-label="Inventory summary">
+      <article><span>Products</span><strong>—</strong></article>
+      <article><span>Stock units</span><strong>—</strong></article>
+      <article><span>Expiring in 7 days</span><strong>—</strong></article>
+      <article><span>Actual waste entries</span><strong>—</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-title"><div><p class="tag">STOCK</p><h2>Food inventory</h2></div>
+        <input id="search" type="search" placeholder="Search products" aria-label="Search products">
+      </div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Product</th><th>Category</th><th>Quantity</th><th>Expiry</th><th>Status</th></tr></thead>
+        <tbody id="inventory"><tr><td colspan="5">Loading inventory…</td></tr></tbody>
+      </table></div>
+    </section>
+
+    <div class="form-grid">
+      <section class="panel">
+        <p class="tag">ADD STOCK</p><h2>Add food item</h2>
+        <form id="add-form">
+          <label>Product name<input name="item_name" required maxlength="100"></label>
+          <label>Category<select name="category_id" required></select></label>
+          <label>Quantity<input name="quantity" type="number" min="0" step="0.01" required></label>
+          <label>Unit<input name="unit" placeholder="kg, bottle, loaf" required maxlength="20"></label>
+          <label>Unit price<input name="unit_price" type="number" min="0.01" step="0.01" required></label>
+          <label>Expiry date<input name="expiry_date" type="date" required></label>
+          <button type="submit">Add product</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <p class="tag">ACTUAL WASTE</p><h2>Record food waste</h2>
+        <form id="waste-form">
+          <label>Food item<select name="item_id" required></select></label>
+          <label>Quantity wasted<input name="quantity" type="number" min="0.01" step="0.01" required></label>
+          <label>Reason<select name="reason_id" required></select></label>
+          <label>Recorded by<select name="user_id" required></select></label>
+          <label>Note<input name="remarks" maxlength="250"></label>
+          <button type="submit">Record waste</button>
+        </form>
+      </section>
+    </div>
+
+    <section class="panel">
+      <div class="section-title"><div><p class="tag">EXPIRY WATCH</p><h2>Expiry alerts</h2></div>
+        <button id="check-alerts" type="button">Check expiry dates</button>
+      </div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Product</th><th>Alert</th><th>Date checked</th><th>Status</th></tr></thead>
+        <tbody id="alerts"><tr><td colspan="4">No alerts loaded.</td></tr></tbody>
+      </table></div>
+    </section>
+
+    <section class="panel">
+      <p class="tag">WASTE HISTORY</p><h2>Recorded waste</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Date</th><th>Product</th><th>Reason</th><th>Quantity</th><th>Estimated loss</th></tr></thead>
+        <tbody id="waste"><tr><td colspan="5">Loading history…</td></tr></tbody>
+      </table></div>
+    </section>
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+  <footer>Oracle stores the rules and records. Flask connects the web page to the database.</footer>
+</body>
+</html>

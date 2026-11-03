@@ -1,0 +1,49 @@
+/* Simple responsive styles for the Fresh Stock mini project. */
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #23332a;
+  background: #f5f4ed;
+  --green: #24543a;
+  --muted: #718078;
+  --line: #e3e7df;
+  --panel: #fffefa;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+.top { display: flex; justify-content: space-between; align-items: center; padding: 22px max(5%, calc((100% - 1120px) / 2)); background: #183c2b; color: white; }
+.top h1 { margin: 2px 0 0; font-size: 27px; }
+.tag { margin: 0 0 7px; color: var(--green); font-size: 10px; font-weight: 800; letter-spacing: 1.2px; }
+.top .tag { color: #b6d2b7; }
+main { max-width: 1120px; margin: 25px auto; padding: 0 18px; }
+h2 { margin: 0 0 17px; font-size: 19px; }
+.summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+.summary-grid article, .panel { border: 1px solid var(--line); border-radius: 12px; background: var(--panel); box-shadow: 0 5px 18px #213c2b0b; }
+.summary-grid article { display: grid; gap: 10px; padding: 17px; }
+.summary-grid span { color: var(--muted); font-size: 12px; }
+.summary-grid strong { font-size: 25px; }
+.panel { margin-bottom: 16px; padding: 20px; }
+.section-title { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.section-title h2 { margin-bottom: 14px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+label { display: grid; gap: 6px; margin-bottom: 11px; color: #53645a; font-size: 12px; font-weight: 650; }
+input, select { width: 100%; min-height: 38px; border: 1px solid #dce2da; border-radius: 7px; padding: 7px 9px; color: #23332a; background: white; }
+input:focus, select:focus, button:focus-visible { outline: 3px solid #9bbd9e; outline-offset: 2px; }
+button { min-height: 36px; border: 0; border-radius: 7px; padding: 8px 13px; background: var(--green); color: white; font-weight: 700; cursor: pointer; }
+button:hover { background: #316c49; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; font-size: 12px; }
+th { color: var(--muted); font-size: 10px; text-transform: uppercase; }
+.status { display: inline-block; border-radius: 20px; padding: 5px 8px; background: #e8f1e7; color: #28603b; font-size: 10px; font-weight: 800; }
+.status.urgent, .status.today, .status.soon { background: #fff0d3; color: #81570e; }
+.status.expired { background: #fae4df; color: #a23f32; }
+.message { min-height: 22px; color: var(--green); font-size: 13px; }
+.message.error { color: #a23f32; }
+footer { padding: 15px; color: var(--muted); text-align: center; font-size: 11px; }
+@media (max-width: 680px) {
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .panel { padding: 15px; }
+  .section-title { align-items: flex-start; flex-direction: column; }
+}
